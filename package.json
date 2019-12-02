@@ -17,7 +17,7 @@
   ],
   "adonisjs": {
     "templates": {
-      "basePath": "./build/config",
+      "basePath": "./lib/config",
       "config": [
         "datadrive.txt"
       ]

@@ -1,22 +1,38 @@
 {
   "name": "adonis-datadrive",
   "version": "0.0.0",
-  "description": "XXX",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "keywords": [],
+  "description": "Extended drive provider for AdonisJs",
+  "main": "./lib/providers/DataDriveProvider.js",
+  "types": "./lib/src/types.d.ts",
+  "keywords": [
+    "adonisjs",
+    "adonis",
+    "drive",
+    "datadrive"
+  ],
   "author": "Michaël Zasso",
   "license": "MIT",
   "files": [
-    "src",
     "lib"
   ],
+  "adonisjs": {
+    "templates": {
+      "basePath": "./build/config",
+      "config": [
+        "datadrive.txt"
+      ]
+    },
+    "types": "adonis-datadrive",
+    "providers": [
+      "adonis-datadrive"
+    ]
+  },
   "scripts": {
     "clean": "rimraf lib",
-    "eslint": "eslint src --ext ts --cache",
+    "eslint": "eslint src providers --ext ts --cache",
     "eslint-fix": "npm run eslint -- --fix",
-    "prepublishOnly": "npm run tsc",
-    "test": "npm run test-coverage && npm run eslint",
+    "prepublishOnly": "npm run tsc && copyfiles \"config/**/*.txt\" lib",
+    "test": "npm run eslint",
     "test-coverage": "npm run test-only -- --coverage",
     "test-only": "jest",
     "tsc": "npm run clean && npm run tsc-cjs",
@@ -42,7 +58,10 @@
     "trailingComma": "all"
   },
   "devDependencies": {
+    "@adonisjs/fold": "^6.2.3",
+    "@targos/adonis-drive": "^4.0.3",
     "@types/jest": "^24.0.23",
+    "@types/uuid": "^3.4.6",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "eslint": "^6.7.2",
@@ -56,5 +75,13 @@
     "rimraf": "^3.0.0",
     "ts-jest": "^24.2.0",
     "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "@slynova/flydrive": "^1.0.0-0",
+    "@types/node": "^12.12.14",
+    "uuid": "^3.3.3"
+  },
+  "peerDependencies": {
+    "@targos/adonis-drive": "^4.0.3"
   }
 }

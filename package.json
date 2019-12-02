@@ -64,6 +64,7 @@
     "@types/uuid": "^3.4.6",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
+    "copyfiles": "^2.1.1",
     "eslint": "^6.7.2",
     "eslint-config-cheminfo": "^2.0.4",
     "eslint-config-cheminfo-typescript": "^4.1.2",

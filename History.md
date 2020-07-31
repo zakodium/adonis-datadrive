@@ -1,3 +1,12 @@
+## [0.1.3](https://github.com/zakodium/adonis-datadrive/compare/v0.1.2...v0.1.3) (2020-07-31)
+
+
+### Bug Fixes
+
+* import adonis drive correctly ([bb8e0fe](https://github.com/zakodium/adonis-datadrive/commit/bb8e0fedc3f53356dc85dcf64e500cc34dc2db9f))
+
+
+
 ## [0.1.2](https://github.com/zakodium/adonis-datadrive/compare/v0.1.1...v0.1.2) (2020-07-31)
 
 

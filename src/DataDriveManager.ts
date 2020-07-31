@@ -1,7 +1,8 @@
-import { DataDrive } from './DataDrive';
+import AdonisDrive from '@ioc:Adonis/Addons/Drive';
 
-import AdonisDrive from '@ioc:Drive';
 import { DataDriveConfig } from '@ioc:DataDrive';
+
+import { DataDrive } from './DataDrive';
 
 export class DataDriveManager {
   private $drives: Record<string, DataDrive>;

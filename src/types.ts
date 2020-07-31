@@ -1,22 +1,11 @@
 declare module '@ioc:DataDrive' {
-  import { Readable } from 'stream';
-
-  import {
-    Storage,
-    Response,
-    ContentResponse,
-    SignedUrlOptions,
-    SignedUrlResponse,
-    StatResponse,
-  } from '@slynova/flydrive';
-
-  import Drive from '@ioc:Drive';
+  import { SignedUrlOptions, StatResponse } from '@slynova/flydrive';
 
   export interface GraphqlUpload {
     filename: string;
     mimetype: string;
     encoding: string;
-    createReadStream: () => Readable;
+    createReadStream: () => NodeJS.ReadableStream;
   }
 
   export interface DataDriveConfig {
@@ -57,10 +46,10 @@ declare module '@ioc:DataDrive' {
       options?: SignedUrlOptions,
     ): Promise<string>;
     public getStat(file: DataDriveFile): Promise<StatResponse>;
-    public getStream(file: DataDriveFile): Readable;
+    public getStream(file: DataDriveFile): NodeJS.ReadableStream;
     public put(
       filename: string,
-      content: Buffer | Readable | string,
+      content: Buffer | NodeJS.ReadableStream | string,
     ): Promise<DataDriveFileWithSize>;
     public storeGraphQLUpload(
       upload: Promise<GraphqlUpload>,

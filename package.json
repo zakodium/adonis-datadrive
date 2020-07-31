@@ -60,29 +60,22 @@
   },
   "devDependencies": {
     "@adonisjs/fold": "^6.2.3",
-    "@targos/adonis-drive": "^4.0.3",
-    "@types/jest": "^24.0.23",
-    "@types/uuid": "^3.4.6",
-    "@typescript-eslint/eslint-plugin": "^2.9.0",
-    "@typescript-eslint/parser": "^2.9.0",
-    "eslint": "^6.7.2",
-    "eslint-config-cheminfo": "^2.0.4",
-    "eslint-config-cheminfo-typescript": "^4.1.2",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.1.1",
-    "eslint-plugin-prettier": "^3.1.1",
-    "jest": "^24.9.0",
-    "prettier": "^1.19.1",
-    "rimraf": "^3.0.0",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.7.2"
+    "@targos/adonis-drive": "^4.0.6",
+    "@types/jest": "^26.0.8",
+    "@zakodium/eslint-config": "^1.0.3",
+    "eslint": "^7.5.0",
+    "jest": "^26.2.1",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.1.4",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@slynova/flydrive": "^1.0.0-0",
-    "@types/node": "^12.12.14",
-    "uuid": "^3.3.3"
+    "@lukeed/uuid": "^1.0.1",
+    "@slynova/flydrive": "^1.0.2",
+    "@types/node": "^14.0.27"
   },
   "peerDependencies": {
-    "@targos/adonis-drive": "^4.0.3"
+    "@targos/adonis-drive": "^4.0.6"
   }
 }

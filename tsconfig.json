@@ -5,7 +5,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "esnext",
-    "types": ["@targos/adonis-drive", "node"]
+    "types": ["@targos/adonis-drive", "node"],
+    "skipLibCheck": true
   },
   "include": ["./src/**/*", "./providers/**/*"]
 }

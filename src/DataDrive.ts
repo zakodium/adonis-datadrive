@@ -43,7 +43,7 @@ export class DataDrive {
   ): Promise<DataDriveFileWithSize> {
     const id = uuid();
     const destPath = this._destPath({ id, filename: dest });
-    await this.disk.copy(this._destPath(src), destPath, {});
+    await this.disk.copy(this._destPath(src), destPath);
     const { size } = await this.disk.getStat(destPath);
     return { id, filename: dest, size };
   }

@@ -11,7 +11,7 @@ export default class DataDriveProvider {
 
   public register(): void {
     this.$container.singleton('DataDrive', () => {
-      const Drive = this.$container.use('Drive');
+      const Drive = this.$container.use('Adonis/Addons/Drive');
       const config = this.$container.use('Adonis/Core/Config').get('datadrive');
       return new DataDriveManager(Drive, config);
     });

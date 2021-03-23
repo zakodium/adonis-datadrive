@@ -1,6 +1,6 @@
 import { extname } from 'path';
 
-import uuid from '@lukeed/uuid';
+import { v4 as uuid } from '@lukeed/uuid';
 import { Storage, SignedUrlOptions, StatResponse } from '@slynova/flydrive';
 
 import {

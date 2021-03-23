@@ -1,18 +1,14 @@
-import { IocContract } from '@adonisjs/fold';
+import { ApplicationContract } from '@ioc:Adonis/Core/Application';
 
 import { DataDriveManager } from '../src/DataDriveManager';
 
 export default class DataDriveProvider {
-  private $container: IocContract;
-
-  public constructor(container: IocContract) {
-    this.$container = container;
-  }
+  public constructor(private app: ApplicationContract) {}
 
   public register(): void {
-    this.$container.singleton('DataDrive', () => {
-      const Drive = this.$container.use('Adonis/Addons/Drive');
-      const config = this.$container.use('Adonis/Core/Config').get('datadrive');
+    this.app.container.singleton('DataDrive', () => {
+      const Drive = this.app.container.use('Adonis/Addons/Drive');
+      const config = this.app.config.get('datadrive');
       return new DataDriveManager(Drive, config);
     });
   }

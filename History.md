@@ -1,3 +1,10 @@
+### [0.1.4](https://github.com/zakodium/adonis-datadrive/compare/v0.1.3...v0.1.4) (2021-03-23)
+
+
+### Bug Fixes
+
+* adapt for latest adonis release ([324f4ac](https://github.com/zakodium/adonis-datadrive/commit/324f4aca411838e29e28c83fa845a3523e563008))
+
 ## [0.1.3](https://github.com/zakodium/adonis-datadrive/compare/v0.1.2...v0.1.3) (2020-07-31)
 
 

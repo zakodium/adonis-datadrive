@@ -1,7 +1,7 @@
 import { extname } from 'path';
 
 import { v4 as uuid } from '@lukeed/uuid';
-import { Storage, SignedUrlOptions, StatResponse } from '@slynova/flydrive';
+import { Storage, SignedUrlOptions, StatResponse, ExistsResponse } from '@slynova/flydrive';
 
 import {
   DataDriveFile,
@@ -50,6 +50,10 @@ export class DataDrive {
 
   public async delete(file: DataDriveFile): Promise<void> {
     await this.disk.delete(this._destPath(file));
+  }
+
+  public async exists(file: DataDriveFile): Promise<ExistsResponse> {
+    return this.disk.exists(this._destPath(file))
   }
 
   public async get(file: DataDriveFile, encoding?: string): Promise<string> {

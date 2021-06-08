@@ -1,5 +1,5 @@
 declare module '@ioc:DataDrive' {
-  import { SignedUrlOptions, StatResponse } from '@slynova/flydrive';
+  import { ExistsResponse, SignedUrlOptions, StatResponse } from '@slynova/flydrive';
 
   export interface GraphqlUpload {
     filename: string;
@@ -39,6 +39,7 @@ declare module '@ioc:DataDrive' {
       dest: string,
     ): Promise<DataDriveFileWithSize>;
     public delete(file: DataDriveFile): Promise<void>;
+    public exists(file: DataDriveFile): Promise<ExistsResponse>;
     public get(file: DataDriveFile, encoding?: string): Promise<string>;
     public getBuffer(file: DataDriveFile): Promise<Buffer>;
     public getSignedUrl(

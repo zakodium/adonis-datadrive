@@ -1,7 +1,12 @@
+import { randomUUID } from 'crypto';
 import { extname } from 'path';
 
-import { v4 as uuid } from '@lukeed/uuid';
-import { Storage, SignedUrlOptions, StatResponse, ExistsResponse } from '@slynova/flydrive';
+import {
+  Storage,
+  SignedUrlOptions,
+  StatResponse,
+  ExistsResponse,
+} from '@slynova/flydrive';
 
 import {
   DataDriveFile,
@@ -41,7 +46,7 @@ export class DataDrive {
     src: DataDriveFile,
     dest: string,
   ): Promise<DataDriveFileWithSize> {
-    const id = uuid();
+    const id = randomUUID();
     const destPath = this._destPath({ id, filename: dest });
     await this.disk.copy(this._destPath(src), destPath);
     const { size } = await this.disk.getStat(destPath);
@@ -53,7 +58,7 @@ export class DataDrive {
   }
 
   public async exists(file: DataDriveFile): Promise<ExistsResponse> {
-    return this.disk.exists(this._destPath(file))
+    return this.disk.exists(this._destPath(file));
   }
 
   public async get(file: DataDriveFile, encoding?: string): Promise<string> {
@@ -86,7 +91,7 @@ export class DataDrive {
     filename: string,
     content: Buffer | NodeJS.ReadableStream | string,
   ): Promise<DataDriveFileWithSize> {
-    const id = uuid();
+    const id = randomUUID();
     const destPath = this._destPath({ id, filename });
     await this.disk.put(destPath, content);
     const { size } = await this.disk.getStat(destPath);
@@ -101,7 +106,7 @@ export class DataDrive {
     upload: Promise<GraphqlUpload>,
   ): Promise<DataDriveFileWithSize> {
     const pdf = await upload;
-    const id = uuid();
+    const id = randomUUID();
     const { createReadStream, filename } = pdf;
     const destPath = this._destPath({ id, filename });
     await this.disk.put(destPath, createReadStream());

@@ -1,5 +1,9 @@
 declare module '@ioc:DataDrive' {
-  import { ExistsResponse, SignedUrlOptions, StatResponse } from '@slynova/flydrive';
+  import {
+    ExistsResponse,
+    SignedUrlOptions,
+    StatResponse,
+  } from '@slynova/flydrive';
 
   export interface GraphqlUpload {
     filename: string;

@@ -1,3 +1,10 @@
+## [0.2.0](https://github.com/zakodium/adonis-datadrive/compare/v0.1.4...v0.2.0) (2021-06-17)
+
+
+### Features
+
+* support exists method ([#3](https://github.com/zakodium/adonis-datadrive/issues/3)) ([cb45cda](https://github.com/zakodium/adonis-datadrive/commit/cb45cda5898b9f60e0e4b13b1990bdf17647d9f5))
+
 ### [0.1.4](https://github.com/zakodium/adonis-datadrive/compare/v0.1.3...v0.1.4) (2021-03-23)
 
 

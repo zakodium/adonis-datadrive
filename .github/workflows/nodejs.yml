@@ -2,11 +2,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: master
+    branches:
+      - main
   pull_request:
 
 env:
-  NODE_VERSION: 14.x
+  NODE_VERSION: 16.x
 
 jobs:
   lint:

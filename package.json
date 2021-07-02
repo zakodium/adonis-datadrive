@@ -16,7 +16,7 @@
     "types": "adonis-datadrive",
     "providers": ["adonis-datadrive"]
   },
-  "engines": { "node": ">=15.6.0" },
+  "engines": { "node": ">=15.6.0||^14.17.0 <15" },
   "scripts": {
     "check-types": "tsc --noEmit",
     "clean": "rimraf lib",

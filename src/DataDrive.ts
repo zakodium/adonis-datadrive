@@ -16,6 +16,10 @@ import {
 
 const goodPrefix = /^[a-zA-Z0-9-]+$/;
 
+interface PutOptions {
+  id?: string;
+}
+
 export class DataDrive {
   private prefix: string;
   private disk: Storage;
@@ -90,8 +94,9 @@ export class DataDrive {
   public async put(
     filename: string,
     content: Buffer | NodeJS.ReadableStream | string,
+    options: PutOptions = {},
   ): Promise<DataDriveFileWithSize> {
-    const id = randomUUID();
+    const { id = randomUUID() } = options;
     const destPath = this._destPath({ id, filename });
     await this.disk.put(destPath, content);
     const { size } = await this.disk.getStat(destPath);

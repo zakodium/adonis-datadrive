@@ -37,6 +37,10 @@ declare module '@ioc:DataDrive' {
     size: number;
   }
 
+  export interface PutOptions {
+    id?: string;
+  }
+
   export class DataDrive {
     public copy(
       src: DataDriveFile,
@@ -55,6 +59,7 @@ declare module '@ioc:DataDrive' {
     public put(
       filename: string,
       content: Buffer | NodeJS.ReadableStream | string,
+      options?: PutOptions,
     ): Promise<DataDriveFileWithSize>;
     public storeGraphQLUpload(
       upload: Promise<GraphqlUpload>,

@@ -82,8 +82,8 @@ export class DataDrive {
   public async put(
     filename: string,
     content: Buffer | Readable | string,
+    id: string = uuidV4(),
   ): Promise<DataDriveFileWithSize> {
-    const id = uuidV4();
     const destPath = this._destPath({ id, filename });
     await this.disk.put(destPath, content);
     const { size } = await this.disk.getStat(destPath);

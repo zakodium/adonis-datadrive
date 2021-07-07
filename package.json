@@ -1,22 +1,36 @@
 {
   "name": "adonis-datadrive",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Extended drive provider for AdonisJs",
   "main": "./lib/providers/DataDriveProvider.js",
   "types": "./lib/src/types.d.ts",
-  "keywords": ["adonisjs", "adonis", "drive", "datadrive"],
+  "keywords": [
+    "adonisjs",
+    "adonis",
+    "drive",
+    "datadrive"
+  ],
   "author": "Michaël Zasso",
   "license": "MIT",
-  "files": ["lib", "templates"],
+  "files": [
+    "lib",
+    "templates"
+  ],
   "adonisjs": {
     "templates": {
       "basePath": "./templates",
-      "config": ["datadrive.txt"]
+      "config": [
+        "datadrive.txt"
+      ]
     },
     "types": "adonis-datadrive",
-    "providers": ["adonis-datadrive"]
+    "providers": [
+      "adonis-datadrive"
+    ]
   },
-  "engines": { "node": ">=15.6.0||^14.17.0" },
+  "engines": {
+    "node": ">=15.6.0||^14.17.0"
+  },
   "scripts": {
     "check-types": "tsc --noEmit",
     "clean": "rimraf lib",

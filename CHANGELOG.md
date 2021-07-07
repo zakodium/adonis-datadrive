@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/zakodium/adonis-datadrive/compare/v0.2.0...v0.3.0) (2021-07-07)
+
+
+### Features
+
+* allows to specify id for put method ([#9](https://www.github.com/zakodium/adonis-datadrive/issues/9)) ([4148501](https://www.github.com/zakodium/adonis-datadrive/commit/41485016701f44f62d09d2301b3481e301386185))
+
 ## [0.2.0](https://github.com/zakodium/adonis-datadrive/compare/v0.1.4...v0.2.0) (2021-06-17)
 
 
@@ -48,6 +55,3 @@
 ### Features
 
 * implement it ([029e83f](https://github.com/zakodium/adonis-datadrive/commit/029e83f665a4254efcf6f6da49e98254b8a7745f))
-
-
-

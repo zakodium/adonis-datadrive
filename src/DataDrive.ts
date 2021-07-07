@@ -1,8 +1,12 @@
+import { randomUUID } from 'crypto';
 import { extname } from 'path';
-import { Readable } from 'stream';
 
-import { Storage, SignedUrlOptions, StatResponse } from '@slynova/flydrive';
-import { v4 as uuidV4 } from 'uuid';
+import {
+  Storage,
+  SignedUrlOptions,
+  StatResponse,
+  ExistsResponse,
+} from '@slynova/flydrive';
 
 import {
   DataDriveFile,
@@ -42,15 +46,19 @@ export class DataDrive {
     src: DataDriveFile,
     dest: string,
   ): Promise<DataDriveFileWithSize> {
-    const id = uuidV4();
+    const id = randomUUID();
     const destPath = this._destPath({ id, filename: dest });
-    await this.disk.copy(this._destPath(src), destPath, {});
+    await this.disk.copy(this._destPath(src), destPath);
     const { size } = await this.disk.getStat(destPath);
     return { id, filename: dest, size };
   }
 
   public async delete(file: DataDriveFile): Promise<void> {
     await this.disk.delete(this._destPath(file));
+  }
+
+  public async exists(file: DataDriveFile): Promise<ExistsResponse> {
+    return this.disk.exists(this._destPath(file));
   }
 
   public async get(file: DataDriveFile, encoding?: string): Promise<string> {
@@ -75,14 +83,14 @@ export class DataDrive {
     return this.disk.getStat(this._destPath(file));
   }
 
-  public getStream(file: DataDriveFile): Readable {
+  public getStream(file: DataDriveFile): NodeJS.ReadableStream {
     return this.disk.getStream(this._destPath(file));
   }
 
   public async put(
     filename: string,
-    content: Buffer | Readable | string,
-    id: string = uuidV4(),
+    content: Buffer | NodeJS.ReadableStream | string,
+    id: string = randomUUID(),
   ): Promise<DataDriveFileWithSize> {
     const destPath = this._destPath({ id, filename });
     await this.disk.put(destPath, content);
@@ -98,7 +106,7 @@ export class DataDrive {
     upload: Promise<GraphqlUpload>,
   ): Promise<DataDriveFileWithSize> {
     const pdf = await upload;
-    const id = uuidV4();
+    const id = randomUUID();
     const { createReadStream, filename } = pdf;
     const destPath = this._destPath({ id, filename });
     await this.disk.put(destPath, createReadStream());

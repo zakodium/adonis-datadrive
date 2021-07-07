@@ -1,4 +1,4 @@
-import AdonisDrive from '@ioc:Drive';
+import AdonisDrive from '@ioc:Adonis/Addons/Drive';
 import { DataDriveConfig } from '@ioc:DataDrive';
 
 import { DataDrive } from './DataDrive';

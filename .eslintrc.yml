@@ -1,3 +1,1 @@
-extends: cheminfo-typescript
-rules:
-  import/no-unresolved: off
+extends: '@zakodium/eslint-config/adonis'

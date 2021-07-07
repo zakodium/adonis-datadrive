@@ -1,39 +1,29 @@
 {
   "name": "adonis-datadrive",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Extended drive provider for AdonisJs",
   "main": "./lib/providers/DataDriveProvider.js",
   "types": "./lib/src/types.d.ts",
-  "keywords": [
-    "adonisjs",
-    "adonis",
-    "drive",
-    "datadrive"
-  ],
+  "keywords": ["adonisjs", "adonis", "drive", "datadrive"],
   "author": "Michaël Zasso",
   "license": "MIT",
-  "files": [
-    "lib",
-    "templates"
-  ],
+  "files": ["lib", "templates"],
   "adonisjs": {
     "templates": {
       "basePath": "./templates",
-      "config": [
-        "datadrive.txt"
-      ]
+      "config": ["datadrive.txt"]
     },
     "types": "adonis-datadrive",
-    "providers": [
-      "adonis-datadrive"
-    ]
+    "providers": ["adonis-datadrive"]
   },
+  "engines": { "node": ">=15.6.0||^14.17.0" },
   "scripts": {
+    "check-types": "tsc --noEmit",
     "clean": "rimraf lib",
-    "eslint": "eslint src providers --ext ts --cache",
+    "eslint": "eslint src providers --cache",
     "eslint-fix": "npm run eslint -- --fix",
     "prepublishOnly": "npm run tsc",
-    "test": "npm run eslint",
+    "test": "npm run eslint && npm run check-types",
     "test-coverage": "npm run test-only -- --coverage",
     "test-only": "jest",
     "tsc": "npm run clean && npm run tsc-cjs",
@@ -59,30 +49,22 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@adonisjs/fold": "^6.2.3",
-    "@targos/adonis-drive": "^4.0.3",
-    "@types/jest": "^24.0.23",
-    "@types/uuid": "^3.4.6",
-    "@typescript-eslint/eslint-plugin": "^2.9.0",
-    "@typescript-eslint/parser": "^2.9.0",
-    "eslint": "^6.7.2",
-    "eslint-config-cheminfo": "^2.0.4",
-    "eslint-config-cheminfo-typescript": "^4.1.2",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.1.1",
-    "eslint-plugin-prettier": "^3.1.1",
-    "jest": "^24.9.0",
-    "prettier": "^1.19.1",
-    "rimraf": "^3.0.0",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.7.2"
+    "@adonisjs/core": "^5.1.8",
+    "@targos/adonis-drive": "^4.0.8",
+    "@types/jest": "^26.0.23",
+    "@zakodium/eslint-config": "^3.0.2",
+    "eslint": "^7.28.0",
+    "jest": "^27.0.4",
+    "prettier": "^2.3.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.3"
   },
   "dependencies": {
-    "@slynova/flydrive": "^1.0.0-0",
-    "@types/node": "^12.12.14",
-    "uuid": "^3.3.3"
+    "@slynova/flydrive": "^1.0.3",
+    "@types/node": "^15.12.2"
   },
   "peerDependencies": {
-    "@targos/adonis-drive": "^4.0.3"
+    "@targos/adonis-drive": ">=4.0.8"
   }
 }

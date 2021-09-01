@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.4.0](https://www.github.com/zakodium/adonis-datadrive/compare/v0.3.0...v0.4.0) (2021-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* move binding to Zakodium/ and depend on now built-in adonisjs/drive
+
+### Code Refactoring
+
+* move binding to Zakodium/ and depend on now built-in adonisjs/drive ([a95e1c6](https://www.github.com/zakodium/adonis-datadrive/commit/a95e1c690ec36af85c0d49663e7f8f70315ba0d3))
+
 ## [0.3.0](https://www.github.com/zakodium/adonis-datadrive/compare/v0.2.0...v0.3.0) (2021-07-07)
 
 

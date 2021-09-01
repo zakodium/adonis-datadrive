@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
+    "declaration": true,
     "esModuleInterop": true,
+    "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": true,
+    "outDir": "./lib",
+    "inlineSourceMap": true,
     "strict": true,
-    "target": "esnext",
-    "types": ["@adonisjs/core", "@targos/adonis-drive", "node"],
-    "skipLibCheck": true
+    "lib": ["es2021"],
+    "target": "es2021",
+    "skipLibCheck": true,
+    "types": ["@adonisjs/core", "node"]
   },
-  "include": ["./src/**/*", "./providers/**/*"]
+  "include": ["./adonis-typings/**/*", "./src/**/*", "./providers/**/*"]
 }

@@ -3,45 +3,42 @@
   "version": "0.3.0",
   "description": "Extended drive provider for AdonisJs",
   "main": "./lib/providers/DataDriveProvider.js",
-  "types": "./lib/src/types.d.ts",
+  "types": "./lib/adonis-typings/index.d.ts",
+  "files": [
+    "lib",
+    "src",
+    "templates"
+  ],
   "keywords": [
     "adonisjs",
     "adonis",
     "drive",
-    "datadrive"
+    "datadrive",
+    "provider"
   ],
   "author": "Michaël Zasso",
   "license": "MIT",
-  "files": [
-    "lib",
-    "templates"
-  ],
   "adonisjs": {
     "templates": {
       "basePath": "./templates",
-      "config": [
-        "datadrive.txt"
-      ]
+      "config": "datadrive.txt"
     },
     "types": "adonis-datadrive",
     "providers": [
       "adonis-datadrive"
     ]
   },
-  "engines": {
-    "node": ">=15.6.0||^14.17.0"
-  },
   "scripts": {
     "check-types": "tsc --noEmit",
     "clean": "rimraf lib",
-    "eslint": "eslint src providers --cache",
+    "eslint": "eslint . --cache",
     "eslint-fix": "npm run eslint -- --fix",
-    "prepublishOnly": "npm run tsc",
-    "test": "npm run eslint && npm run check-types",
-    "test-coverage": "npm run test-only -- --coverage",
-    "test-only": "jest",
+    "prepack": "npm run tsc",
+    "prettier": "prettier --check .",
+    "prettier-write": "prettier --write .",
+    "test": "npm run eslint && npm run prettier && npm run check-types",
     "tsc": "npm run clean && npm run tsc-cjs",
-    "tsc-cjs": "tsc --project tsconfig.cjs.json"
+    "tsc-cjs": "tsc --project tsconfig.prod.json"
   },
   "repository": {
     "type": "git",
@@ -51,34 +48,15 @@
     "url": "https://github.com/zakodium/adonis-datadrive/issues"
   },
   "homepage": "https://github.com/zakodium/adonis-datadrive#readme",
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
-  },
-  "prettier": {
-    "arrowParens": "always",
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "all"
-  },
   "devDependencies": {
-    "@adonisjs/core": "^5.1.8",
-    "@targos/adonis-drive": "^4.0.8",
-    "@types/jest": "^26.0.23",
-    "@zakodium/eslint-config": "^3.0.2",
-    "eslint": "^7.28.0",
-    "jest": "^27.0.4",
-    "prettier": "^2.3.1",
+    "@adonisjs/core": "^5.3.2",
+    "@zakodium/eslint-config": "^3.0.3",
+    "eslint": "^7.32.0",
+    "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
-    "ts-jest": "^27.0.3",
-    "typescript": "^4.3.3"
+    "typescript": "^4.4.2"
   },
   "dependencies": {
-    "@slynova/flydrive": "^1.0.3",
-    "@types/node": "^15.12.2"
-  },
-  "peerDependencies": {
-    "@targos/adonis-drive": ">=4.0.8"
+    "@types/node": "^16.7.10"
   }
 }

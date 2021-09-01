@@ -1,12 +1,15 @@
-import AdonisDrive from '@ioc:Adonis/Addons/Drive';
-import { DataDriveConfig } from '@ioc:DataDrive';
+import type AdonisDrive from '@ioc:Adonis/Core/Drive';
+import type {
+  DataDriveConfig,
+  DataDriveManagerContract,
+} from '@ioc:Zakodium/DataDrive';
 
 import { DataDrive } from './DataDrive';
 
-export class DataDriveManager {
+export class DataDriveManager implements DataDriveManagerContract {
   private $drives: Record<string, DataDrive>;
 
-  public drive(name: string): DataDrive {
+  public use(name: string): DataDrive {
     if (this.$drives[name]) {
       return this.$drives[name];
     } else {
@@ -18,7 +21,7 @@ export class DataDriveManager {
     this.$drives = {};
     for (const name in config.drives) {
       const conf = config.drives[name];
-      this.$drives[name] = new DataDrive(conf.prefix, Drive.disk(conf.disk));
+      this.$drives[name] = new DataDrive(conf.prefix, Drive.use(conf.disk));
     }
   }
 }

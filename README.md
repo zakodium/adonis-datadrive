@@ -1,24 +1,39 @@
-# adonis-datadrive
+# Adonis DataDrive
+
+Extended drive provider for AdonisJS 5.
+
+<h3 align="center">
+
+  <a href="https://www.zakodium.com">
+    <img src="https://www.zakodium.com/brand/zakodium-logo-white.svg" width="50" alt="Zakodium logo" />
+  </a>
+
+  <p>
+    Maintained by <a href="https://www.zakodium.com">Zakodium</a>
+  </p>
 
 [![NPM version][npm-image]][npm-url]
 [![build status][ci-image]][ci-url]
 [![npm download][download-image]][download-url]
 
-Extended drive provider for AdonisJs.
+| :warning: This module is unstable and in active development. Use at your own risk. |
+| ---------------------------------------------------------------------------------- |
+
+</h3>
 
 ## Installation
 
 ```console
 npm i adonis-datadrive
-node ace invoke adonis-datadrive
+node ace configure adonis-datadrive
 ```
 
 ## Usage
 
 ```js
-import DataDrive from '@ioc:DataDrive';
+import DataDrive from '@ioc:Zakodium/DataDrive';
 
-const drive = DataDrive.drive('myDrive');
+const drive = DataDrive.use('myDrive');
 
 // drive.put('myfile.txt', 'mycontent').then(...);
 ```
@@ -31,14 +46,14 @@ const drive = DataDrive.drive('myDrive');
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 
 // Library importation
-import DataDrive from '@ioc:DataDrive';
+import DataDrive from '@ioc:Zakodium/DataDrive';
 
 export default class FilesController {
   public async upload({ request, params }: HttpContextContract) {
     const { filename } = params;
     request.multipart.onFile(filename, {}, async (file) => {
       // Saves the file
-      await DataDrive.drive('dir').put(filename, file);
+      await DataDrive.use('dir').put(filename, file);
     });
     await request.multipart.process();
     return `${filename} uploaded`;

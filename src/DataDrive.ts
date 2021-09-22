@@ -1,6 +1,8 @@
 import { randomUUID } from 'crypto';
+import { createReadStream } from 'fs';
 import { extname } from 'path';
 
+import type { MultipartFileContract } from '@ioc:Adonis/Core/BodyParser';
 import type { DriverContract, DriveFileStats } from '@ioc:Adonis/Core/Drive';
 import type {
   DataDriveContract,
@@ -130,5 +132,16 @@ export class DataDrive implements DataDriveContract {
       filename,
       size,
     };
+  }
+
+  public async moveFromMultipart(
+    file: MultipartFileContract,
+    filename: string,
+    options?: PutOptions,
+  ): Promise<DataDriveFileWithSize> {
+    const { tmpPath } = file;
+    if (!tmpPath) throw new Error('File path is missing');
+
+    return this.putStream(filename, createReadStream(tmpPath), options);
   }
 }

@@ -1,6 +1,8 @@
 import { randomUUID } from 'crypto';
+import { createReadStream } from 'fs';
 import { extname } from 'path';
 
+import type { MultipartFileContract } from '@ioc:Adonis/Core/BodyParser';
 import type { DriverContract, DriveFileStats } from '@ioc:Adonis/Core/Drive';
 import type {
   DataDriveContract,
@@ -93,11 +95,7 @@ export class DataDrive implements DataDriveContract {
     const destPath = this._filePath({ id, filename });
     await this.disk.put(destPath, content);
     const { size } = await this.disk.getStats(destPath);
-    return {
-      id,
-      filename,
-      size,
-    };
+    return { id, filename, size };
   }
 
   public async putStream(
@@ -109,11 +107,7 @@ export class DataDrive implements DataDriveContract {
     const destPath = this._filePath({ id, filename });
     await this.disk.putStream(destPath, content);
     const { size } = await this.disk.getStats(destPath);
-    return {
-      id,
-      filename,
-      size,
-    };
+    return { id, filename, size };
   }
 
   public async storeGraphQLUpload(
@@ -125,10 +119,20 @@ export class DataDrive implements DataDriveContract {
     const destPath = this._filePath({ id, filename });
     await this.disk.putStream(destPath, createReadStream());
     const { size } = await this.disk.getStats(destPath);
-    return {
-      id,
-      filename,
-      size,
-    };
+    return { id, filename, size };
+  }
+
+  public async moveFromMultipart(
+    file: MultipartFileContract,
+    filename: string,
+    options?: PutOptions,
+  ): Promise<DataDriveFileWithSize> {
+    const { tmpPath } = file;
+    if (!tmpPath) throw new Error('File path is missing');
+
+    const streamFile = createReadStream(tmpPath);
+    const createdFile = await this.putStream(filename, streamFile, options);
+    file.markAsMoved(filename, this._filePath(createdFile));
+    return createdFile;
   }
 }

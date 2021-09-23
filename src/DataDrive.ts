@@ -95,11 +95,7 @@ export class DataDrive implements DataDriveContract {
     const destPath = this._filePath({ id, filename });
     await this.disk.put(destPath, content);
     const { size } = await this.disk.getStats(destPath);
-    return {
-      id,
-      filename,
-      size,
-    };
+    return { id, filename, size };
   }
 
   public async putStream(
@@ -111,11 +107,7 @@ export class DataDrive implements DataDriveContract {
     const destPath = this._filePath({ id, filename });
     await this.disk.putStream(destPath, content);
     const { size } = await this.disk.getStats(destPath);
-    return {
-      id,
-      filename,
-      size,
-    };
+    return { id, filename, size };
   }
 
   public async storeGraphQLUpload(
@@ -127,11 +119,7 @@ export class DataDrive implements DataDriveContract {
     const destPath = this._filePath({ id, filename });
     await this.disk.putStream(destPath, createReadStream());
     const { size } = await this.disk.getStats(destPath);
-    return {
-      id,
-      filename,
-      size,
-    };
+    return { id, filename, size };
   }
 
   public async moveFromMultipart(
@@ -142,6 +130,9 @@ export class DataDrive implements DataDriveContract {
     const { tmpPath } = file;
     if (!tmpPath) throw new Error('File path is missing');
 
-    return this.putStream(filename, createReadStream(tmpPath), options);
+    const streamFile = createReadStream(tmpPath);
+    const createdFile = await this.putStream(filename, streamFile, options);
+    file.markAsMoved(filename, this._filePath(createdFile));
+    return createdFile;
   }
 }

@@ -1,4 +1,5 @@
 declare module '@ioc:Zakodium/DataDrive' {
+  import type { MultipartFileContract } from '@ioc:Adonis/Core/BodyParser';
   import {
     DisksList,
     DriverContract,
@@ -65,6 +66,11 @@ declare module '@ioc:Zakodium/DataDrive' {
     ): Promise<DataDriveFileWithSize>;
     storeGraphQLUpload(
       upload: Promise<GraphqlUpload>,
+    ): Promise<DataDriveFileWithSize>;
+    moveFromMultipart(
+      file: MultipartFileContract,
+      filename: string,
+      options?: PutOptions,
     ): Promise<DataDriveFileWithSize>;
   }
 

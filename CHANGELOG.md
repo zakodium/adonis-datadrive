@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.5.1](https://www.github.com/zakodium/adonis-datadrive/compare/v0.5.0...v0.5.1) (2021-09-24)
+
+
+### Bug Fixes
+
+* add types in adonis-typings ([#16](https://www.github.com/zakodium/adonis-datadrive/issues/16)) ([2cdb4ed](https://www.github.com/zakodium/adonis-datadrive/commit/2cdb4ed96020ac75c9eb2778620a75045c956448))
+
 ## [0.5.0](https://www.github.com/zakodium/adonis-datadrive/compare/v0.4.0...v0.5.0) (2021-09-23)
 
 

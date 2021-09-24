@@ -66,6 +66,11 @@ declare module '@ioc:Zakodium/DataDrive' {
     storeGraphQLUpload(
       upload: Promise<GraphqlUpload>,
     ): Promise<DataDriveFileWithSize>;
+    moveFromMultipart(
+      file: MultipartFileContract,
+      filename: string,
+      options?: PutOptions,
+    ): Promise<DataDriveFileWithSize>;
   }
 
   export interface DataDriveManagerContract {

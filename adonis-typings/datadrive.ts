@@ -1,4 +1,5 @@
 declare module '@ioc:Zakodium/DataDrive' {
+  import type { MultipartFileContract } from '@ioc:Adonis/Core/BodyParser';
   import {
     DisksList,
     DriverContract,

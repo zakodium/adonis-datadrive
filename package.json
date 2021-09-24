@@ -1,6 +1,6 @@
 {
   "name": "adonis-datadrive",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Extended drive provider for AdonisJs",
   "main": "./lib/providers/DataDriveProvider.js",
   "types": "./lib/adonis-typings/index.d.ts",
